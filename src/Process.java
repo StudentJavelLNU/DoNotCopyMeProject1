@@ -14,10 +14,19 @@ public class Process {
 	private int turnaroundTime;
 	private int waitingTime;
 
-	public Process(int processId, int arrivalTime, int burstTime) {
-		this.processId = processId;
-		this.arrivalTime = arrivalTime;
-		this.burstTime = burstTime;
+	/**
+	 *
+	 * @param processId
+	 * @param arrivalTime
+	 * @param burstTime
+	 * @throws IllegalArgumentException If negative arrivalTime or burstTime was sent.
+	 */
+	public Process(int processId, int arrivalTime, int burstTime) throws IllegalArgumentException{
+		if(arrivalTime>=0 && burstTime>=0) {
+			this.processId = processId;
+			this.arrivalTime = arrivalTime;
+			this.burstTime = burstTime;
+		}else throw new IllegalArgumentException("Arrival time and/or burstTime can not hack time");
 	}
 
 	/**
