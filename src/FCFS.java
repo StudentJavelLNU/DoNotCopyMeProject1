@@ -75,9 +75,8 @@ public class FCFS{
 	}
 
 	public void printGanttChart() {
-		// TODO Print the demonstration of the scheduling algorithm using Gantt Chart
 		StringBuilder stringTop = new StringBuilder();
-		stringTop.append("%%%%%%%%%%%%%%%% GANTT CHART %%%%%%%%%%%%%%%%"+newLine);
+		stringTop.append("%%%%%%%%%%%%%%%% GANTT CHART %%%%%%%%%%%%%%%%");
 		StringBuilder stringBody = new StringBuilder();
 		StringBuilder stringHeadAndFoot = new StringBuilder();
 
@@ -91,12 +90,7 @@ public class FCFS{
 				}
 				stringBody.append('|');
 			}
-			int mid = CT + (process.getCompletedTime()-CT-2)/2;
-			/*for (int i = 1; i < mid-1; i++) {
-				stringBody.append(' ');
-			}*/
-			stringBody.append(String.format("%"+(process.getCompletedTime())+"S%d","P",process.getProcessId()));
-			//stringBody.append("P"+process.getProcessId());
+			stringBody.append(String.format("%"+(process.getBurstTime())+"S%d","P",process.getProcessId()));
 
 			CT = process.getCompletedTime();
 			stringBody.append("|");
@@ -117,22 +111,16 @@ public class FCFS{
 		stringBody.append(CT);
 		for (Process process:processes){
 			if (process.getArrivalTime() > CT) {
-				for (int i = 0; i <(process.getArrivalTime()-CT); i++) {
-					int offset = 3+process.getArrivalTime()-CT;
+					int offset = 1+(process.getArrivalTime()-CT);
 					stringBody.append(String.format("%"+offset+"d",process.getArrivalTime()));
-				}
-				stringBody.append(process.getArrivalTime());
 			}
-
-			for(int i= 0; i<process.getCompletedTime()-1;i++){
-				stringBody.append(' ');
-			}
+			int offset = 3+ process.getBurstTime();
+			stringBody.append(String.format("%"+offset+"d",process.getCompletedTime()));
 			CT = process.getCompletedTime();
-			stringBody.append(CT);
 		}
 
 		stringBody.append(newLine+newLine);
-		stringBody.append("¶ - indicates CPU idle time");
+		stringBody.append("¶ - indicates CPU idle time"+newLine);
 
 stringTop.append(stringBody);
 
