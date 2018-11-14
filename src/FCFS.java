@@ -52,8 +52,12 @@ public class FCFS{
 				totalRunningTime = process.getArrivalTime();
 			}
 			process.setCompletedTime(this.totalRunningTime+process.getBurstTime());
+			//Did not dare to defy the requirements that said "Only change run and change nothing in class Process"
+			process.setTurnaroundTime(process.getCompletedTime()-process.getArrivalTime());
+			process.setWaitingTime(process.getTurnaroundTime()-process.getBurstTime());
 
 			this.totalRunningTime = process.getCompletedTime();
+
 		}
 		while (endlessLoop){
 			if (this.processes.size() != sizeOfOriginalArray){

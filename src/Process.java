@@ -31,23 +31,35 @@ public class Process {
 		}else throw new IllegalArgumentException("Arrival time and/or burstTime can not hack time");
 	}
 
+
+
 	/**
 	 * Sets completed time, but also waiting time and turnaround time.
 	 * Decreases unnesecarry confusion and errors.
 	 * @param completedTime
 	 */
 	public void setCompletedTime(int completedTime) {
-		this.completedTime = completedTime;
+	this.completedTime = completedTime;
+	/*	For better implemention:
 		this.turnaroundTime = this.completedTime - this.arrivalTime;
 		this.waitingTime = this.turnaroundTime-this.burstTime;
+	*/
 	}
 
 	/**
-	 * Maybe use this.
+	 * FOOOOOOOOOOL
 	 * @param waitingTime
 	 */
-	private void setWaitingTime(int waitingTime) {
+	public void setWaitingTime(int waitingTime) {
 		this.waitingTime = waitingTime;
+	}
+
+	/**
+	 * DO NOT DO LIKE THIS YOU FOOLS
+	 * @param turnaroundTime
+	 */
+	public void setTurnaroundTime(int turnaroundTime) {
+		this.turnaroundTime = turnaroundTime;
 	}
 
 	public int getArrivalTime(){
