@@ -4,6 +4,8 @@
  * Code: 	1DV512
  * Author: 	Suejb Memeti
  * Date: 	November, 2018
+ * Fucked up by: 	David Carlsson
+ * Date of fubar: 	2018-11-14
  */
 
 import static org.junit.Assert.*;
@@ -33,6 +35,8 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test1:");//newLine
+		myFcfs.printTable();
 		myFcfs.printGanttChart();
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
@@ -61,6 +65,8 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test2:");//newLine
+		myFcfs.printTable();
 		myFcfs.printGanttChart();
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
@@ -89,6 +95,9 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test3:");//newLine
+		myFcfs.printTable();
+		myFcfs.printGanttChart();
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
 			assertEquals(processIds[i], listOfProcesses.get(i).getProcessId());
@@ -115,6 +124,8 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test4:");//newLine
+		myFcfs.printTable();
 		myFcfs.printGanttChart();
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
@@ -144,6 +155,8 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test5:");//newLine
+		myFcfs.printTable();
 		myFcfs.printGanttChart();
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
@@ -172,7 +185,10 @@ public class FCFSTest {
 
 		FCFS myFcfs = new FCFS(listOfProcesses);
 		myFcfs.run();
+		System.out.println("Test6:");//newLine
+		myFcfs.printTable();
 		myFcfs.printGanttChart();
+
 
 		for (int i = 0; i < listOfProcesses.size(); i++) {
 			assertEquals(processIds[i], listOfProcesses.get(i).getProcessId());

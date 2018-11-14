@@ -47,6 +47,8 @@ public class FCFS{
 						"are expected to handle this. Do not change the ArrayList after construction!");
 			}
 			if (process.getArrivalTime() > this.totalRunningTime){
+				//Making a "jump" to arrival time, a jump where the cpu is idle.
+				//Nothing to be made about with the FCFS algorithm.
 				totalRunningTime = process.getArrivalTime();
 			}
 			process.setCompletedTime(this.totalRunningTime+process.getBurstTime());
@@ -71,7 +73,29 @@ public class FCFS{
 
 	public void printTable() {
 		// TODO Print the list of processes in form of a table here
+		String headAndFoot = "";
+		StringBuilder body = new StringBuilder();
+		body.append(String.format("%1$3s","PID"));
+		body.append(String.format("%1$5s","AT"));
+		body.append(String.format("%1$5s","BT"));
+		body.append(String.format("%1$5s","CT"));
+		body.append(String.format("%1$5s","TAT"));
+		body.append(String.format("%1$5s","WT"));
 
+		for (int i = 0; i< body.length();i++){
+			headAndFoot += "-";
+		}
+
+		for (Process process: processes){
+			body.append(newLine);
+			body.append(String.format("%1$3s",process.getProcessId()));
+			body.append(String.format(" %1$4s",process.getArrivalTime()));
+			body.append(String.format(" %1$4s",process.getBurstTime()));
+			body.append(String.format(" %1$4s",process.getCompletedTime()));
+			body.append(String.format(" %1$4s",process.getTurnaroundTime()));
+			body.append(String.format(" %1$4s",process.getWaitingTime()));
+		}
+		System.out.println(headAndFoot+newLine+body+newLine+headAndFoot);
 	}
 
 	public void printGanttChart() {
@@ -111,8 +135,8 @@ public class FCFS{
 		stringBody.append(CT);
 		for (Process process:processes){
 			if (process.getArrivalTime() > CT) {
-					int offset = 1+(process.getArrivalTime()-CT);
-					stringBody.append(String.format("%"+offset+"d",process.getArrivalTime()));
+				int offset = 1+(process.getArrivalTime()-CT);
+				stringBody.append(String.format("%"+offset+"d",process.getArrivalTime()));
 			}
 			int offset = 3+ process.getBurstTime();
 			stringBody.append(String.format("%"+offset+"d",process.getCompletedTime()));
@@ -122,7 +146,7 @@ public class FCFS{
 		stringBody.append(newLine+newLine);
 		stringBody.append("¶ - indicates CPU idle time"+newLine);
 
-stringTop.append(stringBody);
+		stringTop.append(stringBody);
 
 
 		System.out.println(stringTop);

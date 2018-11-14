@@ -4,6 +4,8 @@
  * Code: 	1DV512
  * Author: 	Suejb Memeti
  * Date: 	November, 2018
+ * Fucked up by: 	David Carlsson
+ * Date of fubar: 	2018-11-11
  */
 
 public class Process {
