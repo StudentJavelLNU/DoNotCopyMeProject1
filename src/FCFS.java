@@ -41,23 +41,27 @@ public class FCFS{
 			/*
 			Since you can not recive tasks with a arrivaltime earlier than the existing i start by executeing these.
 			*/
-			if (this.processes.size()!=sizeOfOriginalArray){
+			if (this.processes.size() != sizeOfOriginalArray){
 				//This case is not given any description, so ignoring.
-				throw new UnsupportedOperationException("You stupid twat, this is extremly unclear if we " +
-						"are expected to handle this. Do not change the ArrayList after construction!");
+				throw new UnsupportedOperationException("You xxxx" +
+						", it is still extremly unclear if we " +
+						"are expected to handle this. So, do not change the ArrayList after construction!");
 			}
 			if (process.getArrivalTime() > this.totalRunningTime){
 				//Making a "jump" to arrival time, a jump where the cpu is idle.
 				//Nothing to be made about with the FCFS algorithm.
-				totalRunningTime = process.getArrivalTime();
+				while(process.getArrivalTime() > this.totalRunningTime) {
+					this.totalRunningTime++; //tick clock
+				}
 			}
-			process.setCompletedTime(this.totalRunningTime+process.getBurstTime());
+			for (int i = 0; i < process.getBurstTime(); i++){
+				this.totalRunningTime++; //tick clock
+			}
+			process.setCompletedTime(this.totalRunningTime);
 			//Did not dare to defy the requirements that said "Only change run and change nothing in class Process"
+			//Thereoff this stupid errorprone implementation:
 			process.setTurnaroundTime(process.getCompletedTime()-process.getArrivalTime());
 			process.setWaitingTime(process.getTurnaroundTime()-process.getBurstTime());
-
-			this.totalRunningTime = process.getCompletedTime();
-
 		}
 		while (endlessLoop){
 			if (this.processes.size() != sizeOfOriginalArray){
